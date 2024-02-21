@@ -22,6 +22,8 @@ const config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
+        jakarta: ["var(--font-jakarta)", ...fontFamily.sans],
+        aladin: ["var(--font-aladin)", ...fontFamily.sans]
       },
       keyframes: {
         "accordion-down": {
