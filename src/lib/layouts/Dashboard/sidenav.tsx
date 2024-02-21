@@ -28,17 +28,16 @@ const SideNav: React.FC = () => {
         <ul className="flex flex-col mt-4">
           {routes.map((item: SideNavItem) => (
             <li key={item.label}>
-              <Link href={item.href}>
-                <a
-                  id={item.href}
-                  className={`flex items-center p-4 text-gray-200 hover:bg-gray-700 transition-all duration-200 ${
-                    pathname === item.href && "bg-gray-700"
-                  }`}
-                  onClick={() => handleClick(item.href)}
-                >
-                  {item.icon && <item.icon className="h-6 w-6 mr-2" />}
-                  {item.label}
-                </a>
+              <Link
+                href={item.href}
+                id={item.href}
+                className={`flex items-center p-4 text-gray-200 hover:bg-gray-700 transition-all duration-200 ${
+                  pathname === item.href && "bg-gray-700"
+                }`}
+                onClick={() => handleClick(item.href)}
+              >
+                {item.icon && <item.icon className="h-6 w-6 mr-2" />}
+                {item.label}
               </Link>
             </li>
           ))}

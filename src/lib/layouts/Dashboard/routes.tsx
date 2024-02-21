@@ -20,8 +20,8 @@ export const routes: SideNavItem[] = [
     ),
   },
   {
-    label: "Produk",
-    href: "/produk",
+    label: "Kategori",
+    href: "/dashboard/categories",
     icon: () => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
