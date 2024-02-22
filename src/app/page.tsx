@@ -1,7 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable jsx-a11y/no-redundant-roles */
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+
 "use client";
 
-import { Fragment, useState } from "react";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import {
   Bars3Icon,
   MagnifyingGlassIcon,
@@ -9,7 +15,8 @@ import {
   ShoppingBagIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import Link from "next/link";
+import { Fragment, useState } from "react";
 
 const currencies = ["CAD", "USD", "AUD", "EUR", "GBP"];
 const navigation = {
@@ -187,7 +194,7 @@ const footerNavigation = {
   ],
 };
 
-function classNames(...classes) {
+function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
@@ -309,12 +316,12 @@ export default function Home() {
 
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                   <div className="flow-root">
-                    <a
+                    <Link
                       href="#"
                       className="-m-2 block p-2 font-medium text-gray-900"
                     >
                       Create an account
-                    </a>
+                    </Link>
                   </div>
                   <div className="flow-root">
                     <a
