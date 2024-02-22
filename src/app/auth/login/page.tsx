@@ -3,7 +3,7 @@ import React from "react";
 interface Props {}
 
 function LoginPage(props: Props) {
-  const {} = props;
+  // const {} = props;
 
   return (
     <div>

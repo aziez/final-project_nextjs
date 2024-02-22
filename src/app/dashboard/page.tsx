@@ -1,8 +1,8 @@
+/* eslint-disable react/react-in-jsx-scope */
 export default function DashboardPage() {
   return (
     <main>
-      <h1 className="font-jakarta">Dashboard</h1>
-      <h1 className="font-aladin">Dashboard</h1>
+      <h1>Ini Dashboard</h1>
     </main>
   );
 }

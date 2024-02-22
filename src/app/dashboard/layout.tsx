@@ -1,15 +1,8 @@
 import SideNavbar from "@/lib/layouts/Dashboard/sidenav";
 import SideNav from "@/lib/layouts/Dashboard/sidenav";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
-      <div className="w-full flex-none md:w-64">
-        {/* <SideNav /> */}
-        <SideNavbar />
-      </div>
-      <div className="flex-grow p-6 md:overflow-y-auto md:p-12">{children}</div>
-    </div>
-  );
+  return <SideNavbar>{children}</SideNavbar>;
 }

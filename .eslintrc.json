@@ -1,6 +1,10 @@
 {
   // "extends": "next/core-web-vitals"
-    "rules": {},
-    "extends": ["sznm/react", "plugin:@next/next/recommended"]
+  "plugins": ["react", "prettier"],
+  "rules": {
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off"
+   },
+  "extends": ["sznm/react", "plugin:@next/next/recommended"]
 
 }
