@@ -1,0 +1,50 @@
+[
+  {
+    "id_kategori": 1,
+    "nama_kategori": "Buku Tulis & Kertas"
+  },
+  {
+    "id_kategori": 2,
+    "nama_kategori": "Pembungkus Kado & Kemasan"
+  },
+  {
+    "id_kategori": 3,
+    "nama_kategori": "Perlengkapan Pesta"
+  },
+  {
+    "id_kategori": 4,
+    "nama_kategori": "Surat-Menyurat"
+  },
+  {
+    "id_kategori": 5,
+    "nama_kategori": "Perlengkapan Sekolah & Kantor"
+  },
+  {
+    "id_kategori": 6,
+    "nama_kategori": "Dekorasi"
+  },
+  {
+    "id_kategori": 7,
+    "nama_kategori": "Tiket Event"
+  },
+  {
+    "id_kategori": 8,
+    "nama_kategori": "Printer Foto"
+  },
+  {
+    "id_kategori": 9,
+    "nama_kategori": "Roll Film & Kertas Foto"
+  },
+  {
+    "id_kategori": 10,
+    "nama_kategori": "Printer & Scanner"
+  },
+  {
+    "id_kategori": 11,
+    "nama_kategori": "Buku & Alat Tulis Lainnya"
+  },
+  {
+    "id_kategori": 12,
+    "nama_kategori": "Mainan & Games"
+  }
+]

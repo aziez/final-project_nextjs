@@ -1,16 +1,16 @@
 /* eslint-disable no-empty-pattern */
-import React from "react";
+import React from 'react'
 
 interface Props {}
 
 function RegisterPage(props: Props) {
-  const {} = props;
+  const {} = props
 
   return (
     <div>
       <h1>Ini adalah halaman register</h1>
     </div>
-  );
+  )
 }
 
-export default RegisterPage;
+export default RegisterPage

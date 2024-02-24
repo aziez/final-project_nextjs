@@ -2,9 +2,10 @@
 /* eslint-disable no-console */
 // components/SideNavbar.js
 
-"use client";
+'use client'
 
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog, Transition } from '@headlessui/react'
+import { ChartBarSquareIcon } from '@heroicons/react/24/outline'
 import {
   Bars3Icon,
   CalendarIcon,
@@ -12,30 +13,69 @@ import {
   FolderIcon,
   HomeIcon,
   InboxIcon,
+  UserGroupIcon,
   UsersIcon,
   XMarkIcon,
-} from "@heroicons/react/24/outline";
-import { usePathname } from "next/navigation";
-import { Fragment, useState } from "react";
+} from '@heroicons/react/24/outline'
+import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
+import { Fragment, useEffect, useState } from 'react'
 
 const navigation = [
-  { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
-  { name: "Team", href: "#", icon: UsersIcon, current: false },
-  { name: "Projects", href: "#", icon: FolderIcon, current: false },
-  { name: "Calendar", href: "#", icon: CalendarIcon, current: false },
-  { name: "Documents", href: "#", icon: InboxIcon, current: false },
-  { name: "Reports", href: "#", icon: ChartBarIcon, current: false },
-];
+  { name: 'Dashboard', href: '/dashboard', icon: HomeIcon, current: true },
+  {
+    name: 'Produk',
+    href: '/dashboard/products',
+    icon: ChartBarSquareIcon,
+    current: false,
+  },
+  {
+    name: 'Kategori',
+    href: '/dashboard/categories',
+    icon: FolderIcon,
+    current: false,
+  },
+  {
+    name: 'Transaksi',
+    href: '/dashboard/transactions',
+    icon: CalendarIcon,
+    current: false,
+  },
+  {
+    name: 'Report',
+    href: '/dashboard/reports',
+    icon: ChartBarIcon,
+    current: false,
+  },
+  { name: 'User', href: '#', icon: UserGroupIcon, current: false },
+]
 
 function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ')
 }
 
 function SideNav({ children }: Readonly<{ children: React.ReactNode }>) {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const pathname = usePathname();
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const pathname = usePathname()
+  const [updatedNavigation, setUpdatedNavigation] = useState(navigation)
 
-  console.log(pathname);
+  console.log(navigation)
+
+  useEffect(() => {
+    navigation.map((item) => ({
+      ...item,
+      current: item.href === pathname,
+    }))
+  }, [pathname])
+
+  useEffect(() => {
+    const updatedNav = navigation.map((item) => ({
+      ...item,
+      current: item.href === pathname,
+    }))
+
+    setUpdatedNavigation(updatedNav)
+  }, [pathname])
 
   return (
     <div>
@@ -100,15 +140,15 @@ function SideNav({ children }: Readonly<{ children: React.ReactNode }>) {
                     />
                   </div>
                   <nav className="mt-5 space-y-1 px-2">
-                    {navigation.map((item) => (
-                      <a
+                    {updatedNavigation.map((item) => (
+                      <Link
                         key={item.name}
                         href={item.href}
                         className={classNames(
                           item.current
-                            ? "bg-indigo-800 text-white"
-                            : "text-white hover:bg-indigo-600 hover:bg-opacity-75",
-                          "group flex items-center rounded-md px-2 py-2 text-base font-medium",
+                            ? 'bg-indigo-800 text-white'
+                            : 'text-white hover:bg-indigo-600 hover:bg-opacity-75',
+                          'group flex items-center rounded-md px-2 py-2 text-base font-medium',
                         )}
                       >
                         <item.icon
@@ -116,12 +156,12 @@ function SideNav({ children }: Readonly<{ children: React.ReactNode }>) {
                           aria-hidden="true"
                         />
                         {item.name}
-                      </a>
+                      </Link>
                     ))}
                   </nav>
                 </div>
                 <div className="flex flex-shrink-0 border-t border-indigo-800 p-4">
-                  <a href="#" className="group block flex-shrink-0">
+                  <Link href="#" className="group block flex-shrink-0">
                     <div className="flex items-center">
                       <div>
                         <img
@@ -139,7 +179,7 @@ function SideNav({ children }: Readonly<{ children: React.ReactNode }>) {
                         </p>
                       </div>
                     </div>
-                  </a>
+                  </Link>
                 </div>
               </Dialog.Panel>
             </Transition.Child>
@@ -163,15 +203,15 @@ function SideNav({ children }: Readonly<{ children: React.ReactNode }>) {
               />
             </div>
             <nav className="mt-5 flex-1 space-y-1 px-2">
-              {navigation.map((item) => (
-                <a
+              {updatedNavigation.map((item) => (
+                <Link
                   key={item.name}
                   href={item.href}
                   className={classNames(
                     item.current
-                      ? "bg-indigo-800 text-white"
-                      : "text-white hover:bg-indigo-600 hover:bg-opacity-75",
-                    "group flex items-center rounded-md px-2 py-2 text-sm font-medium",
+                      ? 'bg-indigo-800 text-white'
+                      : 'text-white hover:bg-indigo-600 hover:bg-opacity-75',
+                    'group flex items-center rounded-md px-2 py-2 text-sm font-medium',
                   )}
                 >
                   <item.icon
@@ -179,12 +219,12 @@ function SideNav({ children }: Readonly<{ children: React.ReactNode }>) {
                     aria-hidden="true"
                   />
                   {item.name}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>
           <div className="flex flex-shrink-0 border-t border-indigo-800 p-4">
-            <a href="#" className="group block w-full flex-shrink-0">
+            <Link href="#" className="group block w-full flex-shrink-0">
               <div className="flex items-center">
                 <div>
                   <img
@@ -200,7 +240,7 @@ function SideNav({ children }: Readonly<{ children: React.ReactNode }>) {
                   </p>
                 </div>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -219,7 +259,7 @@ function SideNav({ children }: Readonly<{ children: React.ReactNode }>) {
           <div className="py-6">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
               <h1 className="font-aladin text-2xl font-semibold text-gray-900">
-                {pathname.replace(/^\//, "").charAt(0).toUpperCase() +
+                {pathname.replace(/^\//, '').charAt(0).toUpperCase() +
                   pathname.slice(2)}
               </h1>
             </div>
@@ -233,7 +273,7 @@ function SideNav({ children }: Readonly<{ children: React.ReactNode }>) {
         </main>
       </div>
     </div>
-  );
+  )
 }
 
-export default SideNav;
+export default SideNav
