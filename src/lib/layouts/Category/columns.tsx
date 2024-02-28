@@ -2,13 +2,14 @@
 
 import { Button } from '@/lib/components/ui/button'
 import AlertDelete from '@/lib/layouts/Category/AlertDelete'
+import { DataAdd } from '@/lib/layouts/Category/DataAdd'
 import { PencilIcon } from '@heroicons/react/24/outline'
 import type { ColumnDef } from '@tanstack/react-table'
 
 export type Categories = {
-  id_kategori: number
+  id_kategori: string
   nama_kategori: string
-  jumlah_produk: number
+  jumlah_produk: string
 }
 
 export const columns: ColumnDef<Categories>[] = [
@@ -50,12 +51,7 @@ export const columns: ColumnDef<Categories>[] = [
 
       return (
         <>
-          <Button
-            onClick={() => handleClick(id)}
-            className="mr-2 text-blue-500"
-          >
-            <PencilIcon className="h-5 w-5" />
-          </Button>
+          <DataAdd id_kategori={id} />
           <AlertDelete nama_kategori={nama_kategori} />
         </>
       )

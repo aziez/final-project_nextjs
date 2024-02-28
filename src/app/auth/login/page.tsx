@@ -1,16 +1,18 @@
 /* eslint-disable no-empty-pattern */
-import React from "react";
+import { SignInForm } from '@/lib/layouts/SignIn/SignForm'
+import React from 'react'
 
 interface Props {}
 
 function LoginPage(props: Props) {
-  const {} = props;
+  const {} = props
 
   return (
-    <div>
-      <h1>Ini halaman login</h1>
-    </div>
-  );
+    <>
+      {/* <h1>Ini halaman login</h1> */}
+      <SignInForm />
+    </>
+  )
 }
 
-export default LoginPage;
+export default LoginPage

@@ -4,6 +4,7 @@
 
 'use client'
 
+import { getHeading } from '@/lib/utils/getHeading'
 import { Dialog, Transition } from '@headlessui/react'
 import { ChartBarSquareIcon } from '@heroicons/react/24/outline'
 import {
@@ -258,16 +259,16 @@ function SideNav({ children }: Readonly<{ children: React.ReactNode }>) {
         <main className="flex-1">
           <div className="py-6">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
-              <h1 className="font-aladin text-2xl font-semibold text-gray-900">
-                {pathname.replace(/^\//, '').charAt(0).toUpperCase() +
-                  pathname.slice(2)}
-              </h1>
-            </div>
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
-              {/* ! Replace with your content */}
-
-              {children}
-              {/* /End replace */}
+              <div className="overflow-hidden rounded-lg bg-white shadow">
+                <div className="px-4 py-5 sm:px-6">
+                  <h1 className="font-aladin text-2xl font-semibold text-gray-900">
+                    {getHeading(pathname)}
+                    {/* {pathname.replace(/^\//, '').charAt(0).toUpperCase() +
+                      pathname.slice(2)} */}
+                  </h1>
+                </div>
+                <div className="bg-gray-50 px-4 py-5 sm:p-6">{children}</div>
+              </div>
             </div>
           </div>
         </main>
