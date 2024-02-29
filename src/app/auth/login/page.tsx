@@ -9,7 +9,6 @@ function LoginPage(props: Props) {
 
   return (
     <>
-      {/* <h1>Ini halaman login</h1> */}
       <SignInForm />
     </>
   )

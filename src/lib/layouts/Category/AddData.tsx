@@ -18,6 +18,7 @@ import {
 } from '@/lib/components/ui/form'
 import { Input } from '@/lib/components/ui/input'
 import { addData } from '@/lib/utils/fetchingData'
+import { useAddCategoryMutation } from '@/lib/utils/hooks/useCategoryMutation'
 import { ArrowPathIcon } from '@heroicons/react/24/outline'
 import { PlusIcon } from '@heroicons/react/24/solid'
 import { FC, useState } from 'react'
@@ -29,11 +30,20 @@ interface IAddDataProps {
 
 export const AddData: FC<IAddDataProps> = () => {
   const form = useForm<IAddDataProps>()
+  const addCategoryMutation = useAddCategoryMutation()
 
   const [dialogOpen, setDialogOpen] = useState(false)
   const [loading, setLoading] = useState(false)
 
   const onSubmit: SubmitHandler<IAddDataProps> = async (data) => {
+    await addCategoryMutation.mutateAsync(
+      { ...data },
+      {
+        onSuccess: () => {
+          console.log('Berhasillll mutatinnn')
+        },
+      },
+    )
     setLoading(true) // Set loading to true before making the API call
     try {
       const res = await addData('kategori', data)

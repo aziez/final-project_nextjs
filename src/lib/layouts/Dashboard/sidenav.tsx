@@ -67,9 +67,6 @@ function SideNav({ children }: Readonly<{ children: React.ReactNode }>) {
       ...item,
       current: item.href === pathname,
     }))
-  }, [pathname])
-
-  useEffect(() => {
     const updatedNav = navigation.map((item) => ({
       ...item,
       current: item.href === pathname,
