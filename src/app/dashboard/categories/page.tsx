@@ -1,22 +1,13 @@
-import { Categories, columns } from '../../../lib/layouts/Category/columns'
-import { DataTable } from '../../../lib/layouts/Category/data-table'
-import { useData } from '@/lib/utils/fetchingData'
+import { AddData } from '@/lib/layouts/Category/AddData'
+import { TableList } from '@/lib/layouts/Category/TableList'
 
-export default async function Page() {
-  const data = await useData('kategori')
-
-  console.log('DATAAAA AWAL', data)
-
-  try {
-    return (
-      <div className="mt-5 flex justify-center">
-        <div className="w-full">
-          <DataTable columns={columns} data={data} />
-        </div>
+export default function Page() {
+  return (
+    <div className="mt-5 flex justify-center">
+      <div className="w-full">
+        <AddData />
+        <TableList />
       </div>
-    )
-  } catch (error) {
-    console.error('Error loading data:', error)
-    return <div>Error loading data</div>
-  }
+    </div>
+  )
 }

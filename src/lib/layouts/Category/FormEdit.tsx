@@ -17,6 +17,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Input } from '@/lib/components/ui/input'
+import { addData } from '@/lib/utils/fetchingData'
 
 interface DataEdit {
   id_kategori: string
@@ -45,7 +46,10 @@ export const EditForm: FC<DataEdit> = ({
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form
+        onSubmit={form.handleSubmit((value) => addData('kategori', value))}
+        className="space-y-8"
+      >
         <FormField
           control={form.control}
           name="nama_kategori"

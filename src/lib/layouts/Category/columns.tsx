@@ -2,8 +2,7 @@
 
 import { Button } from '@/lib/components/ui/button'
 import AlertDelete from '@/lib/layouts/Category/AlertDelete'
-import { DataAdd } from '@/lib/layouts/Category/DataAdd'
-import { PencilIcon } from '@heroicons/react/24/outline'
+import { EditButton } from '@/lib/layouts/Category/EditButton'
 import type { ColumnDef } from '@tanstack/react-table'
 
 export type Categories = {
@@ -22,7 +21,7 @@ export const columns: ColumnDef<Categories>[] = [
     header: ({ column }) => {
       const isSorted = column.getIsSorted()
       const sortIcon =
-        isSorted === 'asc' ? '🔼' : isSorted === 'desc' ? '🔽' : ''
+        isSorted === 'asc' ? '🔼' : isSorted === 'desc' ? '🔽' : '🔼🔽'
 
       return (
         <Button
@@ -51,7 +50,7 @@ export const columns: ColumnDef<Categories>[] = [
 
       return (
         <>
-          <DataAdd id_kategori={id} />
+          <EditButton id_kategori={id} />
           <AlertDelete nama_kategori={nama_kategori} />
         </>
       )

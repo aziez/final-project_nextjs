@@ -9,7 +9,7 @@ interface DataAddProps {
   id_kategori: string
 }
 
-export const DataAdd: FC<DataAddProps> = ({ id_kategori }) => {
+export const EditButton: FC<DataAddProps> = ({ id_kategori }) => {
   const router = useRouter()
   // const { slug } = router.pathname;
 

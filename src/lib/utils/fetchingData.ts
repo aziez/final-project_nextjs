@@ -8,15 +8,10 @@ const store = new SteinStore(
 export const useData = async (apiUrl: string) => {
   try {
     const data = await store.read(apiUrl)
-
-    // Do something with the data if needed
-    // console.log(data, 'DATAAA');
-
     return data
   } catch (error) {
-    // Handle the error
     console.error('Error fetching data:', error)
-    throw error // Re-throw the error if you want the caller to handle it
+    throw error
   }
 }
 
@@ -26,5 +21,29 @@ export const getData = async (apiUrl: string, id: string) => {
     return data
   } catch (error) {
     return error
+  }
+}
+
+export const addData = async (apiUrl: string, data: any) => {
+  
+  try {
+    const res = await store.append(apiUrl, [data])
+    const customResponse = {
+      code: 200,
+      success: true,
+      message: 'Data added successfully',
+      data: res, // You can customize this part based on your requirements
+    }
+
+    return customResponse
+  } catch (error) {
+    const errorResponse = {
+      code: 400,
+      success: false,
+      message: 'Error adding data',
+      error: error,
+    }
+
+    return errorResponse
   }
 }

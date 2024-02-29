@@ -5,6 +5,7 @@ import { Inter as FontSans } from 'next/font/google'
 import '@/styles/globals.css'
 import { cn } from '@/lib/utils'
 import { fontAladin, fontJakarta } from '@/styles/font'
+import { ReactQueryProvider } from '@/providers/reactQueryProvider'
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -31,7 +32,7 @@ export default function RootLayout({
           fontAladin.variable,
         )}
       >
-        {children}
+        <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>
     </html>
   )
