@@ -7,17 +7,8 @@ import React, { useEffect } from 'react'
 
 async function EditCategory({ params }: { params: { slug: string } }) {
   const id_kategori = params.slug
-  const data = await getData('kategori', id_kategori)
-
-  // const data = await useData(
-  //   `https://api.steinhq.com/v1/storages/65dea65c4a64236312089bfd/kategori/?search={"id_kategori":"${id_kategori}"}`,
-  // )
-
-  console.log('ID_KATEGORI', id_kategori)
-  console.log('KIRIMAN DATA', data)
-
-  console.log(data)
-
+  const data = await getData('kategori', 'id_kategori', id_kategori)
+  
   return (
     <div>
       <EditForm

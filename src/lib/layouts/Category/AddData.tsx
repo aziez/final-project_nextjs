@@ -41,6 +41,9 @@ export const AddData: FC<IAddDataProps> = () => {
       {
         onSuccess: () => {
           console.log('Berhasillll mutatinnn')
+          form.reset({
+            nama_kategori: '',
+          })
         },
       },
     )

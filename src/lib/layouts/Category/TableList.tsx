@@ -8,9 +8,18 @@ import { columns } from './columns'
 interface ITableListProps {}
 
 export const TableList: FC<ITableListProps> = (props) => {
-  const { data, isError, isLoading } = useQuery({
+  const {
+    data: listData,
+    isError,
+    isLoading,
+  } = useQuery({
     queryKey: ['list-kategori'],
     queryFn: () => useData('kategori'),
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
+    refetchOnReconnect: false,
+    retry: false,
+    staleTime: 1000 * 60 * 60 * 24,
   })
 
   if (isError) {
@@ -27,7 +36,7 @@ export const TableList: FC<ITableListProps> = (props) => {
       </div>
     )
   }
-  if (data) {
-    return <DataTable columns={columns} data={data} />
+  if (listData) {
+    return <DataTable columns={columns} data={listData} />
   }
 }

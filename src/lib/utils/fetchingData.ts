@@ -1,13 +1,12 @@
-import axios, { AxiosResponse } from 'axios'
 const SteinStore = require('stein-js-client')
 
 const store = new SteinStore(
-  'https://api.steinhq.com/v1/storages/65dea65c4a64236312089bfd',
+  'https://api.steinhq.com/v1/storages/65e19b574a642363120a3aa5',
 )
 
-export const useData = async (apiUrl: string) => {
+export const useData =  (sheetName: string) => {
   try {
-    const data = await store.read(apiUrl)
+    const data = store.read(sheetName)
     return data
   } catch (error) {
     console.error('Error fetching data:', error)
@@ -15,19 +14,50 @@ export const useData = async (apiUrl: string) => {
   }
 }
 
-export const getData = async (apiUrl: string, id: string) => {
+export const getData = async (
+  sheetName: string,
+  row: string,
+  value: string,
+) => {
   try {
-    const data = await store.read(apiUrl, { search: { apiUrl: id } })
+    const searchObject: any = {}
+    searchObject[row] = value
+
+    const data = await store.read(sheetName, { search: searchObject })
     return data
   } catch (error) {
     return error
   }
 }
 
-export const addData = async (apiUrl: string, data: any) => {
-  
+export const editData = async (
+  sheetName: string,
+  rowId: string,
+  value: string,
+  rowEdit: string,
+  valueEdit: string,
+) => {
   try {
-    const res = await store.append(apiUrl, [data])
+    const searhObject: any = {}
+    const setUpdate: any = {}
+    searhObject[rowId] = value
+    setUpdate[rowEdit] = valueEdit
+
+    const data = await store.edit(
+      sheetName,
+      { search: searhObject },
+      { set: setUpdate },
+    )
+
+    return data
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export const addData = async (sheetName: string, data: any) => {
+  try {
+    const res = await store.append(sheetName, [data])
     const customResponse = {
       code: 200,
       success: true,
