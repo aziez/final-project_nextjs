@@ -15,10 +15,10 @@ export const TableList: FC<ITableListProps> = (props) => {
   } = useQuery({
     queryKey: ['list-kategori'],
     queryFn: () => useData('kategori'),
-    refetchOnWindowFocus: false,
-    refetchOnMount: false,
-    refetchOnReconnect: false,
-    retry: false,
+    // refetchOnWindowFocus: false,
+    // refetchOnMount: false,
+    // refetchOnReconnect: false,
+    // retry: false,
     staleTime: 1000 * 60 * 60 * 24,
   })
 
