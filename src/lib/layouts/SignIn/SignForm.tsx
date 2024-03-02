@@ -1,9 +1,42 @@
 'use client'
 
-import { FC } from 'react'
+import { createClient } from '@/lib/supabase/client'
+import { revalidatePath } from 'next/cache'
+import { redirect, useRouter } from 'next/navigation'
+import React, { FC, useState } from 'react'
+import { useForm } from 'react-hook-form'
 interface ISignInFormProps {}
 
 export const SignInForm: FC<ISignInFormProps> = (props) => {
+  const supabase = createClient()
+  const router = useRouter()
+  const [email, setEmail] = useState('')
+  const [password, setpassword] = useState('')
+
+  const form = useForm()
+
+  // function onSubmit = (value)
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const formData = new FormData(e.currentTarget)
+
+    const data = {
+      email: formData.get('email') as string,
+      password: formData.get('password') as string,
+    }
+
+    const { error } = await supabase.auth.signInWithPassword(data)
+
+    if (error) {
+      console.log(error)
+    }
+
+    router.push('/dashboard')
+    // Your authentication logic here
+  }
+
+  // }
   return (
     <div className="flex min-h-full">
       <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
@@ -104,7 +137,7 @@ export const SignInForm: FC<ISignInFormProps> = (props) => {
             </div>
 
             <div className="mt-6">
-              <form action="#" method="POST" className="space-y-6">
+              <form onSubmit={handleSubmit} method="POST" className="space-y-6">
                 <div>
                   <label
                     htmlFor="email"
