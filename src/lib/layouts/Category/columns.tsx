@@ -51,7 +51,7 @@ export const columns: ColumnDef<Categories>[] = [
       return (
         <>
           <EditButton id_kategori={id} />
-          <AlertDelete nama_kategori={nama_kategori} />
+          <AlertDelete nama_kategori={nama_kategori} id_kategori={id} />
         </>
       )
     },

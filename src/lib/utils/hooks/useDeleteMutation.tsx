@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { FC } from 'react'
 import { addData, useData } from '../fetchingData'
 
-export function useAddCategoryMutation() {
+export function useDeleteMutation() {
   const queryClient = useQueryClient()
 
   return useMutation({

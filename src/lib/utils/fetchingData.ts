@@ -4,7 +4,7 @@ const store = new SteinStore(
   'https://api.steinhq.com/v1/storages/65e19b574a642363120a3aa5',
 )
 
-export const useData =  (sheetName: string) => {
+export const useData = (sheetName: string) => {
   try {
     const data = store.read(sheetName)
     return data
@@ -38,20 +38,28 @@ export const editData = async (
   valueEdit: string,
 ) => {
   try {
-    const searhObject: any = {}
+    const searchObject: any = {}
     const setUpdate: any = {}
-    searhObject[rowId] = value
+    searchObject[rowId] = value
     setUpdate[rowEdit] = valueEdit
 
-    const data = await store.edit(
-      sheetName,
-      { search: searhObject },
-      { set: setUpdate },
-    )
+    const data = await store.edit(sheetName, {
+      search: searchObject,
+      set: setUpdate,
+      limit: 1,
+    })
+    const customResponse = {
+      code: 200,
+      success: true,
+      message: 'Data added successfully',
+      data: data, // You can customize this part based on your requirements
+    }
 
-    return data
+    return customResponse
   } catch (error) {
-    console.error(error)
+    console.error('Error editing data:', error)
+    // Optionally, you can throw the error to let the calling code handle it
+    throw error
   }
 }
 
@@ -76,4 +84,26 @@ export const addData = async (sheetName: string, data: any) => {
 
     return errorResponse
   }
+}
+
+export const deleteData = async (
+  sheetName: string,
+  row: string,
+  value: string,
+) => {
+  try {
+    const deleteObject: any = {}
+    deleteObject[row] = value
+
+    const data = await store.delete(sheetName, { search: deleteObject })
+
+    const customResponse = {
+      code: 200,
+      success: true,
+      message: 'deleted successfully',
+      data: data, // You can customize this part based on your requirements
+    }
+
+    return customResponse
+  } catch (error) {}
 }

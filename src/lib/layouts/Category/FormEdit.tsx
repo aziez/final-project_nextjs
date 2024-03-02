@@ -1,4 +1,5 @@
-'use client'
+// Replace 'next/navigation' with 'next/router'
+import { useRouter } from 'next/navigation'
 
 import { Button } from '@/lib/components/ui/button'
 import {
@@ -10,14 +11,12 @@ import {
   FormLabel,
   FormMessage,
 } from '@/lib/components/ui/form'
-import { PencilIcon } from '@heroicons/react/24/outline'
-import { useRouter } from 'next/navigation'
-import { FC } from 'react'
-import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Input } from '@/lib/components/ui/input'
 import { editData } from '@/lib/utils/fetchingData'
+import { useForm } from 'react-hook-form'
+import { FC } from 'react'
 
 interface DataEdit {
   id_kategori: string
@@ -43,15 +42,21 @@ export const EditForm: FC<DataEdit> = ({
     },
   })
 
+  const router = useRouter() // Use 'const router = useRouter()' if you are navigating within this component.
+
   function onSubmit(value: z.infer<typeof formSchema>) {
-    console.log(value)
     editData(
       'kategori',
       'id_kategori',
       value.id_kategori,
       'nama_kategori',
       value.nama_kategori,
-    )
+    ).then((res) => {
+      if (res?.code === 200) {
+        // Do something upon a successful response
+        router.push('/dashboard/categories')
+      }
+    })
   }
 
   return (
