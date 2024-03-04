@@ -68,7 +68,7 @@ function RegisterPage(props: Props) {
           </div>
           <SubmitButton
             formAction={signUp}
-            pendingText="...signInform"
+            pendingText="...prosessing"
             className="focus:shadow-outline-blue rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:outline-none active:bg-blue-800"
           >
             Register
