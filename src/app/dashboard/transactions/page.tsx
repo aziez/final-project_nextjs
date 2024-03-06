@@ -1,9 +1,12 @@
 import React from 'react'
 
-export default function Page() {
+interface PageProps {
+  params: { slug: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+export default function Page({ params, searchParams }: PageProps) {
   return (
     <div className="mt-5 flex flex-col items-center">
-      <h1 className="mb-3 text-3xl font-bold">TRANSACTIONS</h1>
       <div className="w-full max-w-2xl text-center">
         <p className="mb-4">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. In repellat
