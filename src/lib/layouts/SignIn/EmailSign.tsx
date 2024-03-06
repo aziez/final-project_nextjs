@@ -8,6 +8,7 @@ import { Label } from '@/lib/components/ui/label'
 import { Input } from '@/lib/components/ui/input'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
+import useStore from '@/lib/utils/store/userStore'
 
 // Define type for form data
 interface LoginFormValues {
@@ -29,17 +30,20 @@ const LoginWithEmail: React.FC = () => {
 
   const supabase = createClient()
   const router = useRouter()
+  const { userData, setUserData } = useStore()
 
   const onSubmit = async (data: LoginFormValues) => {
     // console.log('Form data:', data)
 
-    const { error } = await supabase.auth.signInWithPassword(data)
+    const { data: dataUser, error } =
+      await supabase.auth.signInWithPassword(data)
 
     if (error) {
       console.error('error', error)
     } else {
-      //   console.log('data login', data)
+      setUserData(dataUser)
       router.push('/dashboard')
+      console.log('data login', userData)
     }
   }
 

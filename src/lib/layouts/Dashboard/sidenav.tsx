@@ -21,6 +21,7 @@ import {
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { Fragment, useEffect, useState } from 'react'
+import { ProfileBar } from './profile'
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: HomeIcon, current: true },
@@ -158,27 +159,7 @@ function SideNav({ children }: Readonly<{ children: React.ReactNode }>) {
                     ))}
                   </nav>
                 </div>
-                <div className="flex flex-shrink-0 border-t border-indigo-800 p-4">
-                  <Link href="#" className="group block flex-shrink-0">
-                    <div className="flex items-center">
-                      <div>
-                        <img
-                          className="inline-block h-10 w-10 rounded-full"
-                          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                          alt=""
-                        />
-                      </div>
-                      <div className="ml-3">
-                        <p className="text-base font-medium text-white">
-                          Tom Cook
-                        </p>
-                        <p className="text-sm font-medium text-indigo-200 group-hover:text-white">
-                          View profile
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
+                <ProfileBar />
               </Dialog.Panel>
             </Transition.Child>
             <div className="w-14 flex-shrink-0" aria-hidden="true">
@@ -221,25 +202,7 @@ function SideNav({ children }: Readonly<{ children: React.ReactNode }>) {
               ))}
             </nav>
           </div>
-          <div className="flex flex-shrink-0 border-t border-indigo-800 p-4">
-            <Link href="#" className="group block w-full flex-shrink-0">
-              <div className="flex items-center">
-                <div>
-                  <img
-                    className="inline-block h-9 w-9 rounded-full"
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt=""
-                  />
-                </div>
-                <div className="ml-3">
-                  <p className="text-sm font-medium text-white">Tom Cook</p>
-                  <p className="text-xs font-medium text-indigo-200 group-hover:text-white">
-                    View profile
-                  </p>
-                </div>
-              </div>
-            </Link>
-          </div>
+          <ProfileBar />
         </div>
       </div>
       <div className="flex flex-1 flex-col md:pl-64">
